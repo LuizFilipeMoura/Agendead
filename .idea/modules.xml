@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/vraptor-produtos.iml" filepath="$PROJECT_DIR$/vraptor-produtos.iml" />
+      <module fileurl="file://$PROJECT_DIR$/agendead.iml" filepath="$PROJECT_DIR$/agendead.iml" />
     </modules>
   </component>
 </project>
