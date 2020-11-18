@@ -1,13 +1,10 @@
 package br.com.caelum.vraptor.model;
 
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-
-@Entity
-public class Professor {
+public class Disciplina {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
@@ -15,19 +12,9 @@ public class Professor {
 
     private String nome;
 
-    private String pis;
+    private Professor professorResponsavel;
 
-    private String email;
-
-    public Professor() {
-    }
-
-    public Professor(String nome, String pis, String email) {
-        this.nome = nome;
-        this.pis = pis;
-        this.email = email;
-
-    }
+    private Integer cargaHoraria;
 
     public Long getId() {
         return id;
@@ -45,20 +32,19 @@ public class Professor {
         this.nome = nome;
     }
 
-    public String getPis() {
-        return pis;
+    public Professor getProfessorResponsavel() {
+        return professorResponsavel;
     }
 
-    public void setPis(String pis) {
-        this.pis = pis;
+    public void setProfessorResponsavel(Professor professorResponsavel) {
+        this.professorResponsavel = professorResponsavel;
     }
 
-    public String getEmail() {
-        return email;
+    public Integer getCargaHoraria() {
+        return cargaHoraria;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setCargaHoraria(Integer cargaHoraria) {
+        this.cargaHoraria = cargaHoraria;
     }
-
 }

@@ -8,7 +8,7 @@ public class JPAUtil {
 
 	public static EntityManager criaEntityManager() {
 		EntityManagerFactory factory = Persistence
-				.createEntityManagerFactory("default");
+				.createEntityManagerFactory("agendead");
 		return factory.createEntityManager();
 	}
 }
