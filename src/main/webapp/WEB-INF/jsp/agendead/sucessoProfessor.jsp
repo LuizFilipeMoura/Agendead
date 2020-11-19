@@ -24,24 +24,9 @@
         <!-- CSS Just for demo purpose, don't include it in your project -->
         <!-- <link href="assets/demo/demo.css" rel="stylesheet" /> -->
         </head>
-
         <div class="h-100 d-flex justify-content-center align-items-center">
-                <form action="sucesso"><!-- alterar para sucesso professor -->
-                        <div class="form-group">
-                                <label >Nome</label>
-                                <input type="text" class="form-control" name="professor.nome" placeholder="Nome">
-                        </div>
-
-                        <div class="form-group">
-                                <label >Email</label>
-                                <input type="email" class="form-control" name="professor.email" aria-describedby="emailHelp" placeholder="Email">
-                        </div>
-
-                        <div class="form-group">
-                                <label>PIS</label>
-                                <input type="text" class="form-control" name="professor.pis" placeholder="PIS">
-                        </div>
-
-                        <input type="submit" class="btn btn-primary" value="Adicionar"></input>
-                </form>
+            SUCESSO!<br>
+        <a href="/agendead">
+        <button type="button" class="btn btn-primary">Voltar ao inicio</button>
+        </a>
         </div>
