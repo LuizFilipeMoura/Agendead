@@ -65,6 +65,10 @@
                         <i class="nc-icon nc-single-02"></i>
                         <p>Cadastrar Aluno</p>
                 </a></li>
+                <li> <a href="<c:url value="/reuniao"/>">
+                        <i class="nc-icon nc-single-02"></i>
+                        <p>Reunião</p>
+                </a></li>
         </ul>
         </div>
         </div>

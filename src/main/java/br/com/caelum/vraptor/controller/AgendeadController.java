@@ -19,6 +19,10 @@ public class AgendeadController {
     public void cadastrarAluno(){
 
     }
+    @Path("/reuniao")
+    public void reuniao(){
+
+    }
 
     @Path("/cadastrarProfessor")
     public void cadastrarProfessor(){
