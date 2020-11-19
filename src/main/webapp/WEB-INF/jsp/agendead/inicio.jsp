@@ -25,7 +25,7 @@
         <!-- <link href="assets/demo/demo.css" rel="stylesheet" /> -->
         </head>
 
-        <body class="">
+        <body class="" >
         <div class="wrapper ">
         <div class="sidebar" data-color="white" data-active-color="danger">
         <div class="logo">
@@ -49,19 +49,22 @@
         <i class="nc-icon nc-bank"></i>
         <p>Início</p>
         </a>
-        <a href="<c:url value="/cadastrarDisciplina"/>">
-        <i class="nc-icon nc-bank"></i>
-        <p>Cadastrar Disciplina</p>
-        </a>
-                <a href="<c:url value="/cadastrarProfessor"/>">
-                <i class="nc-icon nc-bank"></i>
-                <p>Cadastrar Professor</p>
-                </a>
-                <a href="<c:url value="/cadastrarAluno"/>">
-                <i class="nc-icon nc-bank"></i>
-                <p>Cadastrar Aluno</p>
-                </a>
+
         </li>
+                <li><a href="<c:url value="/cadastrarDisciplina"/>">
+                        <i class="nc-icon nc-book-bookmark"></i>
+                        <p>Cadastrar Disciplina</p>
+                </a>
+                       </li>
+                <li> <a href="<c:url value="/cadastrarProfessor"/>">
+                        <i class="nc-icon nc-hat-3"></i>
+                        <p>Cadastrar Professor</p>
+                </a>
+                       </li>
+                <li> <a href="<c:url value="/cadastrarAluno"/>">
+                        <i class="nc-icon nc-single-02"></i>
+                        <p>Cadastrar Aluno</p>
+                </a></li>
         </ul>
         </div>
         </div>
@@ -122,21 +125,21 @@
         </div>
         </div>
         </nav>
-        <!-- End Navbar -->
-        <div class="content">
+        <!-- End Navbar    font-family: "Montserrat", "Helvetica Neue", Arial, sans-serif;"-->
+        <div class="content" >
         <div class="row">
         <div class="col-lg-3 col-md-6 col-sm-6">
-        <div class="card card-stats">
+        <div class="card card-stats" style="height: 144px">
         <div class="card-body ">
         <div class="row">
         <div class="col-5 col-md-4">
-        <div class="icon-big text-center icon-warning">
+        <div class="icon-big fa-3x text-center icon-warning">
         <i class="nc-icon nc-calendar-60 text-warning"></i>
         </div>
         </div>
         <div class="col-7 col-md-8">
-        <div class="numbers">
-        <p class="card-category">Reuniões</p>
+        <div class="numbers" style="text-align: right;">
+        <p class="card-category" style="font-size: 16px;">Reuniões</p>
         <p class="card-title">3
         <p>
         </div>
@@ -153,17 +156,17 @@
         </div>
         </div>
         <div class="col-lg-3 col-md-6 col-sm-6">
-        <div class="card card-stats">
+        <div class="card card-stats" style="height: 144px">
         <div class="card-body ">
         <div class="row">
         <div class="col-5 col-md-4">
-        <div class="icon-big text-center icon-warning">
+        <div class="icon-big fa-3x text-center icon-warning">
         <i class="nc-icon nc-book-bookmark text-success"></i>
         </div>
         </div>
         <div class="col-7 col-md-8">
-        <div class="numbers">
-        <p class="card-category">Disciplinas</p>
+        <div class="numbers" style="text-align: right;">
+        <p class="card-category" style="font-size: 16px;">Disciplinas</p>
         <p class="card-title">4
         <p>
         </div>
@@ -180,17 +183,17 @@
         </div>
         </div>
         <div class="col-lg-3 col-md-6 col-sm-6">
-        <div class="card card-stats">
+        <div class="card card-stats" style="height: 144px">
         <div class="card-body ">
         <div class="row">
         <div class="col-5 col-md-4">
-        <div class="icon-big text-center icon-warning">
+        <div class="icon-big fa-3x text-center icon-warning">
         <i class="nc-icon nc-hat-3 text-danger"></i>
         </div>
         </div>
         <div class="col-7 col-md-8">
-        <div class="numbers">
-        <p class="card-category">Professores</p>
+        <div class="numbers" style="text-align: right;">
+        <p class="card-category" style="font-size: 16px;">Professores</p>
         <p class="card-title">6
         <p>
         </div>
