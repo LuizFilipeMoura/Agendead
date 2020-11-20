@@ -1,25 +1,29 @@
 package br.com.caelum.vraptor.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 
 @Entity
 public class Professor {
 
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     @Id
     private Long id;
-
     private String nome;
-
     private String pis;
-
     private String email;
+    @OneToOne
+    private Disciplina disciplinaQueMinistra;
 
     public Professor() {
+    }
+
+    public Disciplina getDisciplinaQueMinistra() {
+        return disciplinaQueMinistra;
+    }
+
+    public void setDisciplinaQueMinistra(Disciplina disciplinaQueMinistra) {
+        this.disciplinaQueMinistra = disciplinaQueMinistra;
     }
 
     public Professor(String nome, String pis, String email) {

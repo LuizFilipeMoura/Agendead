@@ -24,9 +24,11 @@
         <!-- CSS Just for demo purpose, don't include it in your project -->
         <!-- <link href="assets/demo/demo.css" rel="stylesheet" /> -->
         </head>
-
+            <a href="/agendead">
+            <button type="button" class="btn btn-primary">Voltar ao inicio</button>
+            </a>
         <div class="h-100 d-flex justify-content-center align-items-center">
-                <form action="sucesso"><!-- alterar para sucesso professor -->
+                <form action="sucessoProfessor"><!-- alterar para sucesso professor -->
                         <div class="form-group">
                                 <label >Nome</label>
                                 <input type="text" class="form-control" name="professor.nome" placeholder="Nome">
@@ -39,7 +41,7 @@
 
                         <div class="form-group">
                                 <label>PIS</label>
-                                <input type="text" class="form-control" name="professor.pis" placeholder="PIS">
+                                <input type="number" class="form-control" name="professor.pis" placeholder="PIS">
                         </div>
 
                         <input type="submit" class="btn btn-primary" value="Adicionar"></input>

@@ -7,6 +7,10 @@
 	
 	<persistence-unit name="agendead">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<class>br.com.caelum.vraptor.model.Professor</class>
+		<class>br.com.caelum.vraptor.model.Aluno</class>
+		<class>br.com.caelum.vraptor.model.Disciplina</class>
+		<class>br.com.caelum.vraptor.model.Reuniao</class>
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
 			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost/agendead" />

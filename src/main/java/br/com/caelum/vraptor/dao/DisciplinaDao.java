@@ -30,6 +30,6 @@ public class DisciplinaDao {
 
     @SuppressWarnings("unchecked")
     public List<Disciplina> lista() {
-        return em.createQuery("select p from disciplina p").getResultList();
+        return em.createQuery("select p from Disciplina p").getResultList();
     }
 }

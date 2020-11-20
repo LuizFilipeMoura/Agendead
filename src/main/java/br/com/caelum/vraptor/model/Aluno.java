@@ -1,9 +1,7 @@
 package br.com.caelum.vraptor.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 
 @Entity
@@ -12,12 +10,31 @@ public class Aluno {
     @GeneratedValue
     @Id
     private Long id;
-
     private String nome;
-
     private String rga;
-
     private String email;
+    @ManyToMany
+    @OrderColumn(name = "pos")
+    private List<Disciplina> disciplinas;
+    @ManyToMany
+    @OrderColumn(name = "pos")
+    private List<Reuniao> reunioes;
+
+    public List<Disciplina> getDisciplinas() {
+        return disciplinas;
+    }
+
+    public void setDisciplinas(List<Disciplina> disciplinas) {
+        this.disciplinas = disciplinas;
+    }
+
+    public List<Reuniao> getReunioes() {
+        return reunioes;
+    }
+
+    public void setReunioes(List<Reuniao> reunioes) {
+        this.reunioes = reunioes;
+    }
 
     public Aluno() {
     }

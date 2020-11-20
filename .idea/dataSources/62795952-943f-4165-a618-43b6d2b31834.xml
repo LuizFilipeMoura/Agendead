@@ -784,12 +784,12 @@ false YEKT
 false Z
 false Zulu
 </TimeZones>
-      <StartupTime>1605738059</StartupTime>
+      <StartupTime>1605818542</StartupTime>
     </root>
     <database id="2" parent="1" name="agendead">
       <ObjectId>32998</ObjectId>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>692</IntrospectionStateNumber>
+      <IntrospectionStateNumber>762</IntrospectionStateNumber>
     </database>
     <database id="3" parent="1" name="postgres">
       <ObjectId>13442</ObjectId>
@@ -846,7 +846,7 @@ false Zulu
       <Comment>standard public schema</Comment>
       <StateNumber>287</StateNumber>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>693</IntrospectionStateNumber>
+      <IntrospectionStateNumber>763</IntrospectionStateNumber>
       <Current>1</Current>
     </schema>
     <access-method id="16" parent="2" name="heap">
@@ -922,128 +922,538 @@ false Zulu
       <StateNumber>605</StateNumber>
       <DataType>bigint|0s</DataType>
     </sequence>
-    <table id="29" parent="15" name="produto">
-      <ObjectId>33052</ObjectId>
+    <table id="29" parent="15" name="aluno">
+      <ObjectId>33074</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>656</StateNumber>
+      <StateNumber>748</StateNumber>
     </table>
-    <table id="30" parent="15" name="professor">
-      <ObjectId>33031</ObjectId>
+    <table id="30" parent="15" name="aluno_disciplina">
+      <ObjectId>33082</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>613</StateNumber>
+      <StateNumber>747</StateNumber>
     </table>
-    <table id="31" parent="15" name="usuario">
-      <ObjectId>33057</ObjectId>
+    <table id="31" parent="15" name="aluno_reuniao">
+      <ObjectId>33087</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>657</StateNumber>
+      <StateNumber>749</StateNumber>
     </table>
-    <column id="32" parent="29" name="id">
+    <table id="32" parent="15" name="disciplina">
+      <ObjectId>33092</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>747</StateNumber>
+    </table>
+    <table id="33" parent="15" name="disciplina_aluno">
+      <ObjectId>33097</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>752</StateNumber>
+    </table>
+    <table id="34" parent="15" name="produto">
+      <ObjectId>33102</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>742</StateNumber>
+    </table>
+    <table id="35" parent="15" name="professor">
+      <ObjectId>33107</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>751</StateNumber>
+    </table>
+    <table id="36" parent="15" name="reuniao">
+      <ObjectId>33115</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>749</StateNumber>
+    </table>
+    <table id="37" parent="15" name="reuniao_aluno">
+      <ObjectId>33120</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>756</StateNumber>
+    </table>
+    <table id="38" parent="15" name="usuario">
+      <ObjectId>33125</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>746</StateNumber>
+    </table>
+    <column id="39" parent="29" name="id">
       <Position>1</Position>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>656</StateNumber>
+      <StateNumber>737</StateNumber>
       <TypeId>20</TypeId>
     </column>
-    <column id="33" parent="29" name="nome">
+    <column id="40" parent="29" name="email">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
-      <StateNumber>656</StateNumber>
+      <StateNumber>737</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="34" parent="29" name="quantidade">
+    <column id="41" parent="29" name="nome">
       <Position>3</Position>
-      <DataType>integer|0s</DataType>
-      <StateNumber>656</StateNumber>
-      <TypeId>23</TypeId>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>737</StateNumber>
+      <TypeId>1043</TypeId>
     </column>
-    <column id="35" parent="29" name="valor">
+    <column id="42" parent="29" name="rga">
       <Position>4</Position>
-      <DataType>double precision|0s</DataType>
-      <StateNumber>656</StateNumber>
-      <TypeId>701</TypeId>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>737</StateNumber>
+      <TypeId>1043</TypeId>
     </column>
-    <index id="36" parent="29" name="produto_pkey">
-      <ObjectId>33055</ObjectId>
-      <StateNumber>656</StateNumber>
+    <index id="43" parent="29" name="aluno_pkey">
+      <ObjectId>33080</ObjectId>
+      <StateNumber>737</StateNumber>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
       <Primary>1</Primary>
     </index>
-    <key id="37" parent="29" name="produto_pkey">
-      <ObjectId>33056</ObjectId>
-      <StateNumber>656</StateNumber>
+    <key id="44" parent="29" name="aluno_pkey">
+      <ObjectId>33081</ObjectId>
+      <StateNumber>737</StateNumber>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>aluno_pkey</UnderlyingIndexName>
+    </key>
+    <column id="45" parent="30" name="aluno_id">
+      <Position>1</Position>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>738</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="46" parent="30" name="disciplinas_id">
+      <Position>2</Position>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>738</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="47" parent="30" name="pos">
+      <Position>3</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>738</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <index id="48" parent="30" name="aluno_disciplina_pkey">
+      <ObjectId>33085</ObjectId>
+      <StateNumber>738</StateNumber>
+      <ColNames>aluno_id
+pos</ColNames>
+      <Unique>1</Unique>
+      <Primary>1</Primary>
+    </index>
+    <key id="49" parent="30" name="aluno_disciplina_pkey">
+      <ObjectId>33086</ObjectId>
+      <StateNumber>738</StateNumber>
+      <ColNames>aluno_id
+pos</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>aluno_disciplina_pkey</UnderlyingIndexName>
+    </key>
+    <foreign-key id="50" parent="30" name="fk_51j65c7f961g2h04pssham35">
+      <ObjectId>33138</ObjectId>
+      <StateNumber>748</StateNumber>
+      <ColNames>aluno_id</ColNames>
+      <RefTableId>33074</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>aluno</RefTableName>
+      <RefKeyName>aluno_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="51" parent="30" name="fk_qwbu5yl1c2logqa8nh0y3slmo">
+      <ObjectId>33133</ObjectId>
+      <StateNumber>747</StateNumber>
+      <ColNames>disciplinas_id</ColNames>
+      <RefTableId>33092</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>disciplina</RefTableName>
+      <RefKeyName>disciplina_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="52" parent="31" name="aluno_id">
+      <Position>1</Position>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>739</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="53" parent="31" name="reunioes_id">
+      <Position>2</Position>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>739</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="54" parent="31" name="pos">
+      <Position>3</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>739</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <index id="55" parent="31" name="aluno_reuniao_pkey">
+      <ObjectId>33090</ObjectId>
+      <StateNumber>739</StateNumber>
+      <ColNames>aluno_id
+pos</ColNames>
+      <Unique>1</Unique>
+      <Primary>1</Primary>
+    </index>
+    <key id="56" parent="31" name="aluno_reuniao_pkey">
+      <ObjectId>33091</ObjectId>
+      <StateNumber>739</StateNumber>
+      <ColNames>aluno_id
+pos</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>aluno_reuniao_pkey</UnderlyingIndexName>
+    </key>
+    <foreign-key id="57" parent="31" name="fk_4cbeul1k8klf6unx8flxkutwu">
+      <ObjectId>33148</ObjectId>
+      <StateNumber>750</StateNumber>
+      <ColNames>aluno_id</ColNames>
+      <RefTableId>33074</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>aluno</RefTableName>
+      <RefKeyName>aluno_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="58" parent="31" name="fk_8ciou3by44eofa303jyomgly0">
+      <ObjectId>33143</ObjectId>
+      <StateNumber>749</StateNumber>
+      <ColNames>reunioes_id</ColNames>
+      <RefTableId>33115</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>reuniao</RefTableName>
+      <RefKeyName>reuniao_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="59" parent="32" name="id">
+      <Position>1</Position>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>740</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="60" parent="32" name="cargahoraria">
+      <Position>2</Position>
+      <DataType>integer|0s</DataType>
+      <StateNumber>740</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="61" parent="32" name="nome">
+      <Position>3</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>740</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="62" parent="32" name="professorresponsavel_id">
+      <Position>4</Position>
+      <DataType>bigint|0s</DataType>
+      <StateNumber>740</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <index id="63" parent="32" name="disciplina_pkey">
+      <ObjectId>33095</ObjectId>
+      <StateNumber>740</StateNumber>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+      <Primary>1</Primary>
+    </index>
+    <key id="64" parent="32" name="disciplina_pkey">
+      <ObjectId>33096</ObjectId>
+      <StateNumber>740</StateNumber>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>disciplina_pkey</UnderlyingIndexName>
+    </key>
+    <foreign-key id="65" parent="32" name="fk_2mam8atdax8m1rr6hxjiejf8g">
+      <ObjectId>33153</ObjectId>
+      <StateNumber>751</StateNumber>
+      <ColNames>professorresponsavel_id</ColNames>
+      <RefTableId>33107</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>professor</RefTableName>
+      <RefKeyName>professor_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="66" parent="33" name="disciplina_id">
+      <Position>1</Position>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>741</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="67" parent="33" name="alunosmatriculados_id">
+      <Position>2</Position>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>741</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="68" parent="33" name="pos">
+      <Position>3</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>741</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <index id="69" parent="33" name="disciplina_aluno_pkey">
+      <ObjectId>33100</ObjectId>
+      <StateNumber>741</StateNumber>
+      <ColNames>disciplina_id
+pos</ColNames>
+      <Unique>1</Unique>
+      <Primary>1</Primary>
+    </index>
+    <key id="70" parent="33" name="disciplina_aluno_pkey">
+      <ObjectId>33101</ObjectId>
+      <StateNumber>741</StateNumber>
+      <ColNames>disciplina_id
+pos</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>disciplina_aluno_pkey</UnderlyingIndexName>
+    </key>
+    <foreign-key id="71" parent="33" name="fk_q9rnsxchww19q353c34gd0fc1">
+      <ObjectId>33163</ObjectId>
+      <StateNumber>753</StateNumber>
+      <ColNames>disciplina_id</ColNames>
+      <RefTableId>33092</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>disciplina</RefTableName>
+      <RefKeyName>disciplina_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="72" parent="33" name="fk_7tbwjnwcoxp9e3wpk7ihaujxg">
+      <ObjectId>33158</ObjectId>
+      <StateNumber>752</StateNumber>
+      <ColNames>alunosmatriculados_id</ColNames>
+      <RefTableId>33074</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>aluno</RefTableName>
+      <RefKeyName>aluno_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="73" parent="34" name="id">
+      <Position>1</Position>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>742</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="74" parent="34" name="nome">
+      <Position>2</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>742</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="75" parent="34" name="quantidade">
+      <Position>3</Position>
+      <DataType>integer|0s</DataType>
+      <StateNumber>742</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="76" parent="34" name="valor">
+      <Position>4</Position>
+      <DataType>double precision|0s</DataType>
+      <StateNumber>742</StateNumber>
+      <TypeId>701</TypeId>
+    </column>
+    <index id="77" parent="34" name="produto_pkey">
+      <ObjectId>33105</ObjectId>
+      <StateNumber>742</StateNumber>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+      <Primary>1</Primary>
+    </index>
+    <key id="78" parent="34" name="produto_pkey">
+      <ObjectId>33106</ObjectId>
+      <StateNumber>742</StateNumber>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>produto_pkey</UnderlyingIndexName>
     </key>
-    <column id="38" parent="30" name="id">
+    <column id="79" parent="35" name="id">
       <Position>1</Position>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>613</StateNumber>
+      <StateNumber>743</StateNumber>
       <TypeId>20</TypeId>
     </column>
-    <column id="39" parent="30" name="email">
+    <column id="80" parent="35" name="email">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
-      <StateNumber>613</StateNumber>
+      <StateNumber>743</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="40" parent="30" name="nome">
+    <column id="81" parent="35" name="nome">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
-      <StateNumber>613</StateNumber>
+      <StateNumber>743</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="41" parent="30" name="pis">
+    <column id="82" parent="35" name="pis">
       <Position>4</Position>
       <DataType>varchar(255)|0s</DataType>
-      <StateNumber>613</StateNumber>
+      <StateNumber>743</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <index id="42" parent="30" name="professor_pkey">
-      <ObjectId>33037</ObjectId>
-      <StateNumber>613</StateNumber>
+    <column id="83" parent="35" name="disciplinaqueministra_id">
+      <Position>5</Position>
+      <DataType>bigint|0s</DataType>
+      <StateNumber>743</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <index id="84" parent="35" name="professor_pkey">
+      <ObjectId>33113</ObjectId>
+      <StateNumber>743</StateNumber>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
       <Primary>1</Primary>
     </index>
-    <key id="43" parent="30" name="professor_pkey">
-      <ObjectId>33038</ObjectId>
-      <StateNumber>613</StateNumber>
+    <key id="85" parent="35" name="professor_pkey">
+      <ObjectId>33114</ObjectId>
+      <StateNumber>743</StateNumber>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>professor_pkey</UnderlyingIndexName>
     </key>
-    <column id="44" parent="31" name="id">
+    <foreign-key id="86" parent="35" name="fk_6dkmlx7j1ibnm6s2tj37hletl">
+      <ObjectId>33168</ObjectId>
+      <StateNumber>754</StateNumber>
+      <ColNames>disciplinaqueministra_id</ColNames>
+      <RefTableId>33092</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>disciplina</RefTableName>
+      <RefKeyName>disciplina_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="87" parent="36" name="id">
       <Position>1</Position>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>657</StateNumber>
+      <StateNumber>744</StateNumber>
       <TypeId>20</TypeId>
     </column>
-    <column id="45" parent="31" name="nome">
+    <column id="88" parent="36" name="horario">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
-      <StateNumber>657</StateNumber>
+      <StateNumber>744</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="46" parent="31" name="senha">
+    <column id="89" parent="36" name="disciplina_id">
       <Position>3</Position>
-      <DataType>varchar(255)|0s</DataType>
-      <StateNumber>657</StateNumber>
-      <TypeId>1043</TypeId>
+      <DataType>bigint|0s</DataType>
+      <StateNumber>744</StateNumber>
+      <TypeId>20</TypeId>
     </column>
-    <index id="47" parent="31" name="usuario_pkey">
-      <ObjectId>33063</ObjectId>
-      <StateNumber>657</StateNumber>
+    <index id="90" parent="36" name="reuniao_pkey">
+      <ObjectId>33118</ObjectId>
+      <StateNumber>744</StateNumber>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
       <Primary>1</Primary>
     </index>
-    <key id="48" parent="31" name="usuario_pkey">
-      <ObjectId>33064</ObjectId>
-      <StateNumber>657</StateNumber>
+    <key id="91" parent="36" name="reuniao_pkey">
+      <ObjectId>33119</ObjectId>
+      <StateNumber>744</StateNumber>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>reuniao_pkey</UnderlyingIndexName>
+    </key>
+    <foreign-key id="92" parent="36" name="fk_cr7o44vuayjv7x7klvxxsh4lt">
+      <ObjectId>33173</ObjectId>
+      <StateNumber>755</StateNumber>
+      <ColNames>disciplina_id</ColNames>
+      <RefTableId>33092</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>disciplina</RefTableName>
+      <RefKeyName>disciplina_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="93" parent="37" name="reuniao_id">
+      <Position>1</Position>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>745</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="94" parent="37" name="alunospermitidos_id">
+      <Position>2</Position>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>745</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="95" parent="37" name="list_index">
+      <Position>3</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>745</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <index id="96" parent="37" name="reuniao_aluno_pkey">
+      <ObjectId>33123</ObjectId>
+      <StateNumber>745</StateNumber>
+      <ColNames>reuniao_id
+list_index</ColNames>
+      <Unique>1</Unique>
+      <Primary>1</Primary>
+    </index>
+    <key id="97" parent="37" name="reuniao_aluno_pkey">
+      <ObjectId>33124</ObjectId>
+      <StateNumber>745</StateNumber>
+      <ColNames>reuniao_id
+list_index</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>reuniao_aluno_pkey</UnderlyingIndexName>
+    </key>
+    <foreign-key id="98" parent="37" name="fk_m3ikp3y236jnlh6xx5fhkipq8">
+      <ObjectId>33183</ObjectId>
+      <StateNumber>757</StateNumber>
+      <ColNames>reuniao_id</ColNames>
+      <RefTableId>33115</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>reuniao</RefTableName>
+      <RefKeyName>reuniao_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="99" parent="37" name="fk_qv7q33fq9fde9t5w1m5h8a1dr">
+      <ObjectId>33178</ObjectId>
+      <StateNumber>756</StateNumber>
+      <ColNames>alunospermitidos_id</ColNames>
+      <RefTableId>33074</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>aluno</RefTableName>
+      <RefKeyName>aluno_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="100" parent="38" name="id">
+      <Position>1</Position>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>746</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="101" parent="38" name="nome">
+      <Position>2</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>746</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="102" parent="38" name="senha">
+      <Position>3</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>746</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="103" parent="38" name="usuario_pkey">
+      <ObjectId>33131</ObjectId>
+      <StateNumber>746</StateNumber>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+      <Primary>1</Primary>
+    </index>
+    <key id="104" parent="38" name="usuario_pkey">
+      <ObjectId>33132</ObjectId>
+      <StateNumber>746</StateNumber>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>usuario_pkey</UnderlyingIndexName>

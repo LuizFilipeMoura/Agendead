@@ -28,6 +28,6 @@ public class AlunoDao {
 
     @SuppressWarnings("unchecked")
     public List<Aluno> lista() {
-        return em.createQuery("select p from aluno p").getResultList();
+        return em.createQuery("select p from Aluno p").getResultList();
     }
 }

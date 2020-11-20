@@ -29,6 +29,6 @@ public class ProfessorDao {
 
     @SuppressWarnings("unchecked")
     public List<Professor> lista() {
-        return em.createQuery("select p from professor p").getResultList();
+        return em.createQuery("select p from Professor p").getResultList();
     }
 }

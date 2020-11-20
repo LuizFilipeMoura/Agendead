@@ -1,19 +1,27 @@
 package br.com.caelum.vraptor.model;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
+@Entity
 public class Reuniao {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     @Id
     private Long id;
-
+    @ManyToOne
     private Disciplina disciplina;
-
-    private Aluno[] alunosPermitidos;
-
+    @ManyToMany
+    @OrderColumn(name = "list_index")
+    private List<Aluno> alunosPermitidos;
     private String horario;
+
+    public List<Aluno> getAlunosPermitidos() {
+        return alunosPermitidos;
+    }
+
+    public void setAlunosPermitidos(List<Aluno> alunosPermitidos) {
+        this.alunosPermitidos = alunosPermitidos;
+    }
 
     public Long getId() {
         return id;
@@ -29,14 +37,6 @@ public class Reuniao {
 
     public void setDisciplina(Disciplina disciplina) {
         this.disciplina = disciplina;
-    }
-
-    public Aluno[] getAlunosPermitidos() {
-        return alunosPermitidos;
-    }
-
-    public void setAlunosPermitidos(Aluno[] alunosPermitidos) {
-        this.alunosPermitidos = alunosPermitidos;
     }
 
     public String getHorario() {

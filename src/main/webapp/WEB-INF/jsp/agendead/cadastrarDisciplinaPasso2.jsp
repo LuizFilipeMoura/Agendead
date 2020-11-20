@@ -24,13 +24,10 @@
         <!-- CSS Just for demo purpose, don't include it in your project -->
         <!-- <link href="assets/demo/demo.css" rel="stylesheet" /> -->
         </head>
-        <a href="/agendead">
-        <button type="button" class="btn btn-primary">Voltar ao inicio</button>
-        </a>
             <div class="h-100 d-flex justify-content-center align-items-center">
                 <form action="cadastrarDisciplinaPasso2">
                     <div class="form-group">
-                            <label >Professor Responsavel</label>
+                            <label >Alunos</label>
                             <select>
                             <c:forEach items="${professorList}" var="professor">
                                     <option name="disciplina.professorResponsavel">${professor.nome}</option >
@@ -43,7 +40,7 @@
                         <input type="number" class="form-control" name="disciplina.cargaHoraria" placeholder="Carga Horaria">
 
                         </div>
-                    <input type="submit" class="btn btn-primary" value="Selecionar Alunos"></input>
+                    <input type="submit" class="btn btn-primary" value="Adicionar"></input>
 
                 </form>
             </div>
