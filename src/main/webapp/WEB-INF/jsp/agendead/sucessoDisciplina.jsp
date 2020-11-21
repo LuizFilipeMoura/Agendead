@@ -11,7 +11,7 @@
         <link rel="icon" type="image/png" href="img/favicon.png">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
         <title>
-        Cadastrar Disciplina
+        Cadastrar Aluno
         </title>
         <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
         name='viewport' />
@@ -24,23 +24,9 @@
         <!-- CSS Just for demo purpose, don't include it in your project -->
         <!-- <link href="assets/demo/demo.css" rel="stylesheet" /> -->
         </head>
-            <div class="h-100 d-flex justify-content-center align-items-center">
-                <form action="cadastrarDisciplinaPasso2">
-                    <div class="form-group">
-                            <label >Alunos</label>
-                            <select>
-                            <c:forEach items="${professorList}" var="professor">
-                                    <option name="disciplina.professorResponsavel">${professor.nome}</option >
-                            </c:forEach>
-                            </select>
-                    </div>
-
-                    <div class="form-group">
-                            <label >Carga Horaria</label>
-                        <input type="number" class="form-control" name="disciplina.cargaHoraria" placeholder="Carga Horaria">
-
-                        </div>
-                    <input type="submit" class="btn btn-primary" value="Adicionar"></input>
-
-                </form>
-            </div>
+        <div class="h-100 d-flex justify-content-center align-items-center">
+            SUCESSO!<br>
+        <a href="/agendead">
+        <button type="button" class="btn btn-primary">Voltar ao inicio</button>
+        </a>
+        </div>

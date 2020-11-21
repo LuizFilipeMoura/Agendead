@@ -28,12 +28,17 @@
         <button type="button" class="btn btn-primary">Voltar ao inicio</button>
         </a>
             <div class="h-100 d-flex justify-content-center align-items-center">
-                <form action="cadastrarDisciplinaPasso2">
+                <form action="sucessoDisciplina" method="post">
+        <div class="form-group">
+        <label >Nome</label>
+        <input type="text" class="form-control" name="disciplina.nome" placeholder="Nome">
+
+        </div>
                     <div class="form-group">
                             <label >Professor Responsavel</label>
-                            <select>
-                            <c:forEach items="${professorList}" var="professor">
-                                    <option name="disciplina.professorResponsavel">${professor.nome}</option >
+                            <select name="idProfessor">
+                            <c:forEach items="${professoresList}" var="professor">
+                                    <option value="${professor.id}">${professor.nome}</option >
                             </c:forEach>
                             </select>
                     </div>
@@ -43,7 +48,27 @@
                         <input type="number" class="form-control" name="disciplina.cargaHoraria" placeholder="Carga Horaria">
 
                         </div>
-                    <input type="submit" class="btn btn-primary" value="Selecionar Alunos"></input>
+            <label >Alunos</label><br>
+<%--            <c:forEach items="${alunosList}" var="aluno">--%>
+<%--                    <label class="form-check-label" >${aluno.nome}</label>--%>
+<%--                    <input type="checkbox" name="id" value="${aluno.id}"--%>
+<%--                name="idAlunos" ${idAlunos ? 'checked' : '' }><br>--%>
+
+<%--                    &lt;%&ndash;            <option name="disciplina.alunosMatriculados">${aluno.nome}</option >&ndash;%&gt;--%>
+<%--            </c:forEach>--%>
+        <c:forEach var="category" items="${alunosList}" varStatus="s">
+
+            <input type="checkbox" name="alunos[${s.index}].id" value="${category.id}" /> ${category.nome}<br>
+
+        </c:forEach>
+                    <input type="submit" class="btn btn-primary" value="Cadastrar disciplina"></input>
+
+
+
+        <c:forEach items="${errors}" var="erro">
+                        <br> <label>${erro.category} <br> ${erro.message}</label><br>
+                    </c:forEach>
+
 
                 </form>
             </div>

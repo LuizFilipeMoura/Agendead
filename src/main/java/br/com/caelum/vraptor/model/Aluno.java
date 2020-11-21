@@ -1,6 +1,9 @@
 package br.com.caelum.vraptor.model;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 
@@ -10,8 +13,11 @@ public class Aluno {
     @GeneratedValue
     @Id
     private Long id;
+    @NotNull @NotEmpty
     private String nome;
+    @NotNull @NotEmpty
     private String rga;
+    @NotNull @NotEmpty
     private String email;
     @ManyToMany
     @OrderColumn(name = "pos")

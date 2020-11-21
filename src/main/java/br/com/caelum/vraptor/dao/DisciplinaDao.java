@@ -2,6 +2,7 @@ package br.com.caelum.vraptor.dao;
 
 import java.util.List;
 
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
 
@@ -12,12 +13,18 @@ public class DisciplinaDao {
 
     private final EntityManager em;
 
+    @Inject
     public DisciplinaDao(EntityManager em) {
         this.em = em;
     }
+    public DisciplinaDao(){
+        this(null);
+    }
 
     public void adiciona(Disciplina disciplina) {
+        em.getTransaction().begin();
         em.persist(disciplina);
+        em.getTransaction().commit();
     }
 
     public void remove(Disciplina disciplina) {

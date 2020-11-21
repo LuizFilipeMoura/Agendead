@@ -29,7 +29,7 @@
             </a>
         <div class="h-100 d-flex justify-content-center align-items-center">
                 <form action="sucessoProfessor"><!-- alterar para sucesso professor -->
-                        <div class="form-group">
+                        <div class="form-group" method="post">
                                 <label >Nome</label>
                                 <input type="text" class="form-control" name="professor.nome" placeholder="Nome">
                         </div>
@@ -45,5 +45,8 @@
                         </div>
 
                         <input type="submit" class="btn btn-primary" value="Adicionar"></input>
-                </form>
+            <c:forEach items="${errors}" var="erro">
+                    <br> <label>${erro.category} <br> ${erro.message}</label><br>
+            </c:forEach>
+            </form>
         </div>

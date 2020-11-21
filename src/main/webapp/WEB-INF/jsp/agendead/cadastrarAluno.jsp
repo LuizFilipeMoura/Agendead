@@ -28,7 +28,7 @@
             <button type="button" class="btn btn-primary">Voltar ao inicio</button>
             </a>
             <div class="h-100 d-flex justify-content-center align-items-center">
-                    <form action="sucessoAluno">
+                    <form action="sucessoAluno" method="post">
                             <div class="form-group">
                             <label >Nome</label>
                             <input type="text" class="form-control" name="aluno.nome" placeholder="Nome">
@@ -45,5 +45,10 @@
                             </div>
 
                             <input type="submit" class="btn btn-primary" value="Adicionar"></input>
-                    </form>
+
+            <c:forEach items="${errors}" var="erro">
+                    <br> <label>${erro.category} <br> ${erro.message}</label><br>
+            </c:forEach>
+            </form>
+
             </div>
