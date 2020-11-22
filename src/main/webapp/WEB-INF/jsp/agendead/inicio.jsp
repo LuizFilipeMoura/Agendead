@@ -171,7 +171,7 @@
         <div class="col-7 col-md-8">
         <div class="numbers" style="text-align: right;">
         <p class="card-category" style="font-size: 16px;">Disciplinas</p>
-        <p class="card-title">4
+        <p class="card-title">${disciplinasList.size()}
         <p>
         </div>
         </div>
@@ -193,6 +193,33 @@
         </div>
         </div>
         </div>
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats" style="height: 144px">
+                <div class="card-body ">
+                <div class="row">
+                <div class="col-5 col-md-4">
+                <div class="icon-big fa-3x text-center icon-warning">
+                <i class="nc-icon nc-hat-3 text-danger"></i>
+                </div>
+                </div>
+                <div class="col-7 col-md-8">
+                <div class="numbers" style="text-align: right;">
+                <p class="card-category" style="font-size: 16px;">Alunos</p>
+                <p class="card-title">${alunosList.size()}
+                <p>
+                </div>
+                </div>
+                </div>
+                </div>
+                <div class="card-footer ">
+                <hr>
+                <div class="stats">
+                <i class="nc-icon nc-book-bookmark"></i>
+                Cadastrados
+                </div>
+                </div>
+                </div>
+                </div>
         <div class="col-lg-3 col-md-6 col-sm-6">
         <div class="card card-stats" style="height: 144px">
         <div class="card-body ">
@@ -205,7 +232,7 @@
         <div class="col-7 col-md-8">
         <div class="numbers" style="text-align: right;">
         <p class="card-category" style="font-size: 16px;">Professores</p>
-        <p class="card-title">6
+        <p class="card-title">${professoresList.size()}
         <p>
         </div>
         </div>
@@ -251,19 +278,18 @@
                 <div class="collapse" id="professores">
                 <div class="card card-body">
                 <c:forEach items="${professoresList}" var="professor">
-                        <form action="editarProfessor" method="POST">
+                        <div class="row">
+                        <form action="editarProfessor" method="POST" class="pull-right">
                         <input type="text" hidden name="professor.id" value="${professor.id}">
                         <a class="list-group-item clearfix" >
                         ${professor.nome}
-                        <form class="pull-right">
                         <input type="submit" class="btn btn-primary" value="EDITAR"/>
                         </form>
                         <form action="deletaProfessor/${professor.id}">
                         <input type="submit" class="btn btn-secundary" value="APAGAR REGISTRO"/>
-                        </span>
                         </form>
                         </a>
-                        </form>
+                        </div>
                 </c:forEach>
                 </div>
                 </div>
@@ -272,19 +298,18 @@
                 <div class="collapse" id="alunos">
                 <div class="card card-body">
                 <c:forEach items="${alunosList}" var="aluno">
-                        <form action="editarAluno" method="POST">
+                        <div class="row">
+                        <form action="editarAluno" method="POST" class="pull-right">
                         <input type="text" hidden name="aluno.id" value="${aluno.id}">
                         <a class="list-group-item clearfix" >
                         ${aluno.nome}
-                        <form class="pull-right">
                         <input type="submit" class="btn btn-primary" value="EDITAR"/>
                         </form>
                         <form action="deletaAluno/${aluno.id}">
                         <input type="submit" class="btn btn-secundary" value="APAGAR REGISTRO"/>
-                        </span>
                         </form>
                         </a>
-                        </form>
+                        </div>
                 </c:forEach>
                 </div>
                 </div>
@@ -292,19 +317,21 @@
                 <div class="collapse" id="disciplinas">
                 <div class="card card-body">
                 <c:forEach items="${disciplinasList}" var="disciplina">
-                        <form action="editarDisciplina" method="POST">
+                        <div class="row">
+                        <form action="editarDisciplina" method="POST" class="pull-right">
                         <input type="text" hidden name="disciplina.id" value="${disciplina.id}">
                         <a class="list-group-item clearfix" >
                         ${disciplina.nome}
-                        <form class="pull-right">
+
+<%--                        <form >--%>
                         <input type="submit" class="btn btn-primary" value="EDITAR"/>
                         </form>
-                        <form action="deletaDisciplina/${disciplina.id}">
+                        <form action="deletaDisciplina/${disciplina.id}" class="pull-right">
                         <input type="submit" class="btn btn-secundary" value="APAGAR REGISTRO"/>
-                        </span>
                         </form>
                         </a>
-                        </form>
+                        </div>
+<%--                        </form>--%>
                 </c:forEach>
                 </div>
                 </div>

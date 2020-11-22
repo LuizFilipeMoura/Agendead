@@ -126,13 +126,13 @@ public class AgendeadController {
 //        p.setDisciplinaQueMinistra(disciplina);
 //        professorDao.altera(p);
 
-//        for(int i = 0; i < alunos.size(); i++){
-//            Aluno aluno = em.find(Aluno.class, alunos.get(i).getId());
-//            aluno.getDisciplinas().add(disciplina);
-//            System.out.println(aluno);
-//            alunoDao.altera(aluno);
-//        }
-//        em.getTransaction().commit();
+        for(int i = 0; i < alunos.size(); i++){
+            Aluno aluno = em.find(Aluno.class, alunos.get(i).getId());
+            aluno.getDisciplinas().add(disciplina);
+            System.out.println(aluno);
+            alunoDao.altera(aluno);
+        }
+        em.getTransaction().commit();
     }
 
 }
