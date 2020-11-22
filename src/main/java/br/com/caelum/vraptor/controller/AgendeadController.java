@@ -67,6 +67,15 @@ public class AgendeadController {
 
     }
 
+    @Get("/deletaProfessor/{id}")
+    public void removeProfessor(String id){
+        Professor disciplina = em.find(Professor.class, Long.parseLong(id));
+        em.getTransaction().begin();
+        em.remove(disciplina);
+        em.getTransaction().commit();
+        result.redirectTo("/");
+    }
+
 
     @Path("/cadastrarDisciplina")
     public void cadastrarDisciplina(){
@@ -81,12 +90,11 @@ public class AgendeadController {
     }
     @Get("/deletaDisciplina/{id}")
     public void removeDisciplina(String id){
-        System.out.println("ENTROU AQUI");
         Disciplina disciplina = em.find(Disciplina.class, Long.parseLong(id));
-        disciplinaDao.remove(disciplina);
+        em.getTransaction().begin();
+        em.remove(disciplina);
+        em.getTransaction().commit();
         result.redirectTo("/");
-//        System.out.println(obj);
-//        em.remove(em.find(Object.class, obj.getId()));
     }
 
 
@@ -107,27 +115,24 @@ public class AgendeadController {
 
     @Post("/sucessoDisciplina")
     public void sucessoDisciplina(@Valid Disciplina disciplina, List<Aluno> alunos, Long idProfessor){
-        Professor p = em.find(Professor.class, idProfessor);
         disciplina.setAlunosMatriculados(alunos);
-        disciplina.setProfessorResponsavel(p);
-
-        System.out.println(disciplina.toString());
         validator.onErrorForwardTo(this).cadastrarDisciplina();
         if(disciplina.getId() == null){
-            disciplinaDao.adiciona(disciplina);
+            disciplinaDao.adiciona(disciplina, idProfessor);
         }else{
-            disciplinaDao.altera(disciplina);
+//            System.out.println(disciplina);
+            disciplinaDao.altera(disciplina, idProfessor);
         }
-        p.setDisciplinaQueMinistra(disciplina);
-        professorDao.altera(p);
+//        p.setDisciplinaQueMinistra(disciplina);
+//        professorDao.altera(p);
 
-        for(int i = 0; i < alunos.size(); i++){
-            Aluno aluno = em.find(Aluno.class, alunos.get(i).getId());
-            aluno.getDisciplinas().add(disciplina);
-            System.out.println(aluno);
-            alunoDao.altera(aluno);
-        }
-
+//        for(int i = 0; i < alunos.size(); i++){
+//            Aluno aluno = em.find(Aluno.class, alunos.get(i).getId());
+//            aluno.getDisciplinas().add(disciplina);
+//            System.out.println(aluno);
+//            alunoDao.altera(aluno);
+//        }
+//        em.getTransaction().commit();
     }
 
 }

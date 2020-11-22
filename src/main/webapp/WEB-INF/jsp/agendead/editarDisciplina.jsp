@@ -11,7 +11,7 @@
         <link rel="icon" type="image/png" href="img/favicon.png">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
         <title>
-        Cadastrar Disciplina
+        Editar Disciplina
         </title>
         <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
         name='viewport' />
@@ -46,6 +46,7 @@
                     <div class="form-group">
                             <label >Carga Horaria</label>
                         <input type="number" class="form-control" name="disciplina.cargaHoraria" placeholder="Carga Horaria" value="${disciplina.cargaHoraria}">
+        <input type="text" hidden class="form-control" name="disciplina.id" value="${disciplina.id}">
 
                         </div>
             <label >Alunos</label><br>
@@ -61,7 +62,7 @@
             <input type="checkbox" name="alunos[${s.index}].id" value="${category.id}" /> ${category.nome}<br>
 
         </c:forEach>
-                    <input type="submit" class="btn btn-primary" value="Cadastrar disciplina"></input>
+                    <input type="submit" class="btn btn-primary" value="Editar Disciplina"></input>
 
 
 

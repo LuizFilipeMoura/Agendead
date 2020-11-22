@@ -11,7 +11,7 @@
         <link rel="icon" type="image/png" href="img/favicon.png">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
         <title>
-        Cadastrar Aluno
+        Editar Aluno
         </title>
         <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
         name='viewport' />
@@ -31,7 +31,9 @@
                     <form action="sucessoAluno" method="post">
                             <div class="form-group">
                             <label >Nome</label>
-                            <input type="text" class="form-control" name="aluno.nome" placeholder="Nome" value="${aluno.nome}">
+            <input type="text" hidden class="form-control" name="aluno.id" value="${aluno.id}">
+
+            <input type="text" class="form-control" name="aluno.nome" placeholder="Nome" value="${aluno.nome}">
                             </div>
 
                             <div class="form-group">

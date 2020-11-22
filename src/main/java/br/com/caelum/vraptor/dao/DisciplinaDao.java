@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.PreUpdate;
 
 
 import br.com.caelum.vraptor.model.Disciplina;
@@ -21,20 +22,32 @@ public class DisciplinaDao {
         this(null);
     }
 
-    public void adiciona(Disciplina disciplina) {
+    public void adiciona(Disciplina disciplina, Long pId) {
+        Professor p = em.find(Professor.class, pId);
         em.getTransaction().begin();
+        disciplina.setProfessorResponsavel(p);
+        p.setDisciplinaQueMinistra(disciplina);
+        em.merge(p);
         em.persist(disciplina);
         em.getTransaction().commit();
     }
-    public void altera(Disciplina d) {
+    public void altera(Disciplina d, Long pId) {
+        Disciplina novad = em.find(Disciplina.class, d.getId());
         em.getTransaction().begin();
-        Disciplina novo = em.find(Disciplina.class, d.getId());
-        novo.setNome(d.getNome());
-        novo.setCargaHoraria(d.getCargaHoraria());
-        novo.setAlunosMatriculados(d.getAlunosMatriculados());
+        Professor novop = em.find(Professor.class, pId);
+        Professor antigop = em.find(Professor.class, novad.getProfessorResponsavel().getId());
+        em.merge(antigop);
+        antigop.setDisciplinaQueMinistra(null);
+        novad.setProfessorResponsavel(null);
+        em.merge(novop);
+//        novop.setDisciplinaQueMinistra(d);
+//        novad.setProfessorResponsavel(novop);
+//        novad.setNome(d.getNome());
+//        novad.setCargaHoraria(d.getCargaHoraria());
+//        novad.setAlunosMatriculados(d.getAlunosMatriculados());
         em.getTransaction().commit();
-        em.close();
     }
+
 
     public void remove(Disciplina disciplina) {
         em.remove(busca(disciplina));

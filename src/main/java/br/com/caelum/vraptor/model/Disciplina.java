@@ -13,7 +13,7 @@ public class Disciplina {
         return "Disciplina{" +
                 "id=" + id +
                 ", nome='" + nome + '\'' +
-                ", professorResponsavel=" + professorResponsavel +
+                ", professorResponsavel="  +
                 ", alunosMatriculados=" + alunosMatriculados +
                 ", cargaHoraria=" + cargaHoraria +
                 '}';
@@ -32,6 +32,17 @@ public class Disciplina {
     private List<Aluno> alunosMatriculados;
     private Integer cargaHoraria;
 
+    @PreRemove
+    public void preRemove() {
+        professorResponsavel.setDisciplinaQueMinistra(null);
+    }
+
+    @PreUpdate
+    public void preUpdate() {
+        if(professorResponsavel != null){
+            professorResponsavel.setDisciplinaQueMinistra(null);
+        }
+    }
     public Long getId() {
         return id;
     }

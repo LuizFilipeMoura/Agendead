@@ -33,7 +33,6 @@ public class ProfessorDao {
         novo.setEmail(professor.getEmail());
         novo.setPis(professor.getPis());
         em.getTransaction().commit();
-        em.close();
     }
 
     public void remove(Professor professor) {

@@ -255,13 +255,13 @@
                         <input type="text" hidden name="professor.id" value="${professor.id}">
                         <a class="list-group-item clearfix" >
                         ${professor.nome}
-                        <span class="pull-right">
-                        <input type="submit" class="btn btn-primary" value="EDITAR">
-                        <span class="btn btn-xs btn-default" onclick="alert('Action1 -> Play'); event.stopPropagation();">
-                        APAGAR REGISTRO
-                        <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
+                        <form class="pull-right">
+                        <input type="submit" class="btn btn-primary" value="EDITAR"/>
+                        </form>
+                        <form action="deletaProfessor/${professor.id}">
+                        <input type="submit" class="btn btn-secundary" value="APAGAR REGISTRO"/>
                         </span>
-                        </span>
+                        </form>
                         </a>
                         </form>
                 </c:forEach>
@@ -276,13 +276,13 @@
                         <input type="text" hidden name="aluno.id" value="${aluno.id}">
                         <a class="list-group-item clearfix" >
                         ${aluno.nome}
-                        <span class="pull-right">
-                        <input type="submit" class="btn btn-primary" value="EDITAR">
-                        <span class="btn btn-xs btn-default" onclick="alert('Action1 -> Play'); event.stopPropagation();">
-                        APAGAR REGISTRO
-                        <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
+                        <form class="pull-right">
+                        <input type="submit" class="btn btn-primary" value="EDITAR"/>
+                        </form>
+                        <form action="deletaAluno/${aluno.id}">
+                        <input type="submit" class="btn btn-secundary" value="APAGAR REGISTRO"/>
                         </span>
-                        </span>
+                        </form>
                         </a>
                         </form>
                 </c:forEach>

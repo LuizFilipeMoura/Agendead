@@ -22,7 +22,22 @@ public class Professor {
     @OneToOne
     private Disciplina disciplinaQueMinistra;
 
+    @PreRemove
+    public void preRemove() {
+        disciplinaQueMinistra.setProfessorResponsavel(null);
+    }
     public Professor() {
+    }
+
+    @Override
+    public String toString() {
+        return "Professor{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", pis='" + pis + '\'' +
+                ", email='" + email + '\'' +
+                ", disciplinaQueMinistra="  +
+                '}';
     }
 
     public Disciplina getDisciplinaQueMinistra() {

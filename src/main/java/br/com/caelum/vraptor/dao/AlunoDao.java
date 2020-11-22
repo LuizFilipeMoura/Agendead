@@ -33,7 +33,6 @@ public class AlunoDao {
         novo.setDisciplinas(aluno.getDisciplinas());
         novo.setRga(aluno.getRga());
         em.getTransaction().commit();
-        em.close();
     }
     
     public void remove(Aluno aluno) {
