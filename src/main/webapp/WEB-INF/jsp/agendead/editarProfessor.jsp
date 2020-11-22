@@ -11,7 +11,7 @@
         <link rel="icon" type="image/png" href="img/favicon.png">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
         <title>
-        Cadastrar Professor
+        Editar Professor
         </title>
         <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
         name='viewport' />
@@ -28,23 +28,25 @@
             <button type="button" class="btn btn-primary">Voltar ao inicio</button>
             </a>
         <div class="h-100 d-flex justify-content-center align-items-center">
+
                 <form action="sucessoProfessor" method="post"><!-- alterar para sucesso professor -->
-                        <div class="form-group">
+                        <div class="form-group" >
                                 <label >Nome</label>
-                                <input type="text" class="form-control" name="professor.nome" placeholder="Nome">
+                                <input type="text" class="form-control" name="professor.nome" placeholder="Nome" value=${professor.nome}>
                         </div>
 
                         <div class="form-group">
                                 <label >Email</label>
-                                <input type="email" class="form-control" name="professor.email" aria-describedby="emailHelp" placeholder="Email">
+                                <input type="email" class="form-control" name="professor.email" aria-describedby="emailHelp" placeholder="Email" value=${professor.email}>
                         </div>
 
                         <div class="form-group">
                                 <label>PIS</label>
-                                <input type="number" class="form-control" name="professor.pis" placeholder="PIS">
+                                <input type="number" class="form-control" name="professor.pis" placeholder="PIS" value=${professor.pis}>
                         </div>
+                        <input type="number" class="form-control" name="professor.id" hidden value=${professor.id}>
 
-                        <input type="submit" class="btn btn-primary" value="Adicionar"></input>
+                        <input type="submit" class="btn btn-primary" value="Atualizar"></input>
             <c:forEach items="${errors}" var="erro">
                     <br> <label>${erro.category} <br> ${erro.message}</label><br>
             </c:forEach>

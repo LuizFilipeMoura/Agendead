@@ -84,4 +84,15 @@ public class Aluno {
         this.email = email;
     }
 
+    @Override
+    public String toString() {
+        return "Aluno{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", rga='" + rga + '\'' +
+                ", email='" + email + '\'' +
+                ", disciplinas=" + disciplinas +
+                ", reunioes=" + reunioes +
+                '}';
+    }
 }

@@ -789,7 +789,7 @@ false Zulu
     <database id="2" parent="1" name="agendead">
       <ObjectId>33188</ObjectId>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>893</IntrospectionStateNumber>
+      <IntrospectionStateNumber>1247</IntrospectionStateNumber>
     </database>
     <database id="3" parent="1" name="postgres">
       <ObjectId>13442</ObjectId>
@@ -847,7 +847,7 @@ false Zulu
       <Comment>standard public schema</Comment>
       <StateNumber>287</StateNumber>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>894</IntrospectionStateNumber>
+      <IntrospectionStateNumber>1248</IntrospectionStateNumber>
       <Current>1</Current>
     </schema>
     <access-method id="16" parent="2" name="heap">
@@ -1038,9 +1038,9 @@ false Zulu
       <StateNumber>820</StateNumber>
     </table>
     <table id="49" parent="15" name="disciplina">
-      <ObjectId>33311</ObjectId>
+      <ObjectId>34775</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>870</StateNumber>
+      <StateNumber>1217</StateNumber>
     </table>
     <table id="50" parent="15" name="disciplina_aluno">
       <ObjectId>33212</ObjectId>
@@ -1184,10 +1184,10 @@ pos</ColNames>
       <RefColNames>id</RefColNames>
     </foreign-key>
     <foreign-key id="69" parent="47" name="fk_qwbu5yl1c2logqa8nh0y3slmo">
-      <ObjectId>33318</ObjectId>
-      <StateNumber>870</StateNumber>
+      <ObjectId>34782</ObjectId>
+      <StateNumber>1217</StateNumber>
       <ColNames>disciplinas_id</ColNames>
-      <RefTableId>33311</RefTableId>
+      <RefTableId>34775</RefTableId>
       <RefColPositions>1</RefColPositions>
       <RefTableName>disciplina</RefTableName>
       <RefKeyName>disciplina_pkey</RefKeyName>
@@ -1254,57 +1254,57 @@ pos</ColNames>
       <Position>1</Position>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>867</StateNumber>
+      <StateNumber>1214</StateNumber>
       <TypeId>20</TypeId>
     </column>
     <column id="78" parent="49" name="cargahoraria">
       <Position>2</Position>
       <DataType>integer|0s</DataType>
-      <StateNumber>867</StateNumber>
+      <StateNumber>1214</StateNumber>
       <TypeId>23</TypeId>
     </column>
     <column id="79" parent="49" name="nome">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>867</StateNumber>
+      <StateNumber>1214</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="80" parent="49" name="professorresponsavel_id">
       <Position>4</Position>
       <DataType>bigint|0s</DataType>
-      <StateNumber>867</StateNumber>
+      <StateNumber>1214</StateNumber>
       <TypeId>20</TypeId>
     </column>
     <index id="81" parent="49" name="disciplina_pkey">
-      <ObjectId>33314</ObjectId>
-      <StateNumber>867</StateNumber>
+      <ObjectId>34778</ObjectId>
+      <StateNumber>1214</StateNumber>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
       <Primary>1</Primary>
     </index>
     <index id="82" parent="49" name="uk_2mam8atdax8m1rr6hxjiejf8g">
-      <ObjectId>33316</ObjectId>
-      <StateNumber>869</StateNumber>
+      <ObjectId>34780</ObjectId>
+      <StateNumber>1216</StateNumber>
       <ColNames>professorresponsavel_id</ColNames>
       <Unique>1</Unique>
     </index>
     <key id="83" parent="49" name="disciplina_pkey">
-      <ObjectId>33315</ObjectId>
-      <StateNumber>867</StateNumber>
+      <ObjectId>34779</ObjectId>
+      <StateNumber>1214</StateNumber>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>disciplina_pkey</UnderlyingIndexName>
     </key>
     <key id="84" parent="49" name="uk_2mam8atdax8m1rr6hxjiejf8g">
-      <ObjectId>33317</ObjectId>
-      <StateNumber>869</StateNumber>
+      <ObjectId>34781</ObjectId>
+      <StateNumber>1216</StateNumber>
       <ColNames>professorresponsavel_id</ColNames>
       <UnderlyingIndexName>uk_2mam8atdax8m1rr6hxjiejf8g</UnderlyingIndexName>
     </key>
     <foreign-key id="85" parent="49" name="fk_2mam8atdax8m1rr6hxjiejf8g">
-      <ObjectId>33323</ObjectId>
-      <StateNumber>871</StateNumber>
+      <ObjectId>34787</ObjectId>
+      <StateNumber>1218</StateNumber>
       <ColNames>professorresponsavel_id</ColNames>
       <RefTableId>33217</RefTableId>
       <RefColPositions>1</RefColPositions>
@@ -1417,10 +1417,10 @@ pos</ColNames>
       <UnderlyingIndexName>uk_6dkmlx7j1ibnm6s2tj37hletl</UnderlyingIndexName>
     </key>
     <foreign-key id="101" parent="51" name="fk_6dkmlx7j1ibnm6s2tj37hletl">
-      <ObjectId>33333</ObjectId>
-      <StateNumber>873</StateNumber>
+      <ObjectId>34797</ObjectId>
+      <StateNumber>1220</StateNumber>
       <ColNames>disciplinaqueministra_id</ColNames>
-      <RefTableId>33311</RefTableId>
+      <RefTableId>34775</RefTableId>
       <RefColPositions>1</RefColPositions>
       <RefTableName>disciplina</RefTableName>
       <RefKeyName>disciplina_pkey</RefKeyName>
@@ -1460,10 +1460,10 @@ pos</ColNames>
       <UnderlyingIndexName>reuniao_pkey</UnderlyingIndexName>
     </key>
     <foreign-key id="107" parent="52" name="fk_cr7o44vuayjv7x7klvxxsh4lt">
-      <ObjectId>33338</ObjectId>
-      <StateNumber>874</StateNumber>
+      <ObjectId>34802</ObjectId>
+      <StateNumber>1221</StateNumber>
       <ColNames>disciplina_id</ColNames>
-      <RefTableId>33311</RefTableId>
+      <RefTableId>34775</RefTableId>
       <RefColPositions>1</RefColPositions>
       <RefTableName>disciplina</RefTableName>
       <RefKeyName>disciplina_pkey</RefKeyName>

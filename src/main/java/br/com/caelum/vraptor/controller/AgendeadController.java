@@ -1,8 +1,6 @@
 package br.com.caelum.vraptor.controller;
 
-import br.com.caelum.vraptor.Path;
-import br.com.caelum.vraptor.Post;
-import br.com.caelum.vraptor.Result;
+import br.com.caelum.vraptor.*;
 import br.com.caelum.vraptor.dao.AlunoDao;
 import br.com.caelum.vraptor.dao.DisciplinaDao;
 import br.com.caelum.vraptor.dao.ProfessorDao;
@@ -44,8 +42,12 @@ public class AgendeadController {
 
     @Path("/")
     public void inicio(){
-
+        result.include("professoresList", professorDao.lista()) ;
+        result.include("alunosList", alunoDao.lista()) ;
+        result.include("disciplinasList", disciplinaDao.lista());
     }
+
+
 
     @Path("/cadastrarAluno")
     public void cadastrarAluno(){
@@ -58,13 +60,33 @@ public class AgendeadController {
 
     @Path("/cadastrarProfessor")
     public void cadastrarProfessor(){
+    }
+    @Post("/editarProfessor")
+    public void editarProfessor(Professor professor){
+        result.include("professor", em.find(Professor.class, professor.getId()));
 
     }
+
 
     @Path("/cadastrarDisciplina")
     public void cadastrarDisciplina(){
         result.include("professoresList", professorDao.lista()) ;
         result.include("alunosList", alunoDao.lista()) ;
+    }
+    @Post("/editarDisciplina")
+    public void editarDisciplina(Disciplina disciplina){
+        result.include("professoresList", professorDao.lista()) ;
+        result.include("alunosList", alunoDao.lista()) ;
+        result.include("disciplina", em.find(Disciplina.class, disciplina.getId()));
+    }
+    @Get("/deletaDisciplina/{id}")
+    public void removeDisciplina(String id){
+        System.out.println("ENTROU AQUI");
+        Disciplina disciplina = em.find(Disciplina.class, Long.parseLong(id));
+        disciplinaDao.remove(disciplina);
+        result.redirectTo("/");
+//        System.out.println(obj);
+//        em.remove(em.find(Object.class, obj.getId()));
     }
 
 
@@ -76,16 +98,35 @@ public class AgendeadController {
     @Post("/sucessoProfessor")
     public void sucessoProfessor(@Valid Professor professor){
         validator.onErrorForwardTo(this).cadastrarProfessor();
-        professorDao.adiciona(professor);
+        if(professor.getId() == null){
+            professorDao.adiciona(professor);
+        }else{
+            professorDao.altera(professor);
+        }
     }
 
     @Post("/sucessoDisciplina")
     public void sucessoDisciplina(@Valid Disciplina disciplina, List<Aluno> alunos, Long idProfessor){
+        Professor p = em.find(Professor.class, idProfessor);
         disciplina.setAlunosMatriculados(alunos);
-        disciplina.setProfessorResponsavel(em.find(Professor.class, idProfessor));
+        disciplina.setProfessorResponsavel(p);
+
         System.out.println(disciplina.toString());
         validator.onErrorForwardTo(this).cadastrarDisciplina();
-        disciplinaDao.adiciona(disciplina);
+        if(disciplina.getId() == null){
+            disciplinaDao.adiciona(disciplina);
+        }else{
+            disciplinaDao.altera(disciplina);
+        }
+        p.setDisciplinaQueMinistra(disciplina);
+        professorDao.altera(p);
+
+        for(int i = 0; i < alunos.size(); i++){
+            Aluno aluno = em.find(Aluno.class, alunos.get(i).getId());
+            aluno.getDisciplinas().add(disciplina);
+            System.out.println(aluno);
+            alunoDao.altera(aluno);
+        }
 
     }
 

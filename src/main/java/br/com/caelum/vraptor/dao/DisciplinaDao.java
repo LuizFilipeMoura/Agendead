@@ -26,6 +26,15 @@ public class DisciplinaDao {
         em.persist(disciplina);
         em.getTransaction().commit();
     }
+    public void altera(Disciplina d) {
+        em.getTransaction().begin();
+        Disciplina novo = em.find(Disciplina.class, d.getId());
+        novo.setNome(d.getNome());
+        novo.setCargaHoraria(d.getCargaHoraria());
+        novo.setAlunosMatriculados(d.getAlunosMatriculados());
+        em.getTransaction().commit();
+        em.close();
+    }
 
     public void remove(Disciplina disciplina) {
         em.remove(busca(disciplina));

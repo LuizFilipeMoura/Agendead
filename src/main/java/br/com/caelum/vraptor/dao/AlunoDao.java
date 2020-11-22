@@ -6,6 +6,7 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
 import br.com.caelum.vraptor.model.Aluno;
+import br.com.caelum.vraptor.model.Aluno;
 
 public class AlunoDao {
 
@@ -24,6 +25,17 @@ public class AlunoDao {
         em.getTransaction().commit();
     }
 
+    public void altera(Aluno aluno) {
+        em.getTransaction().begin();
+        Aluno novo = em.find(Aluno.class, aluno.getId());
+        novo.setNome(aluno.getNome());
+        novo.setEmail(aluno.getEmail());
+        novo.setDisciplinas(aluno.getDisciplinas());
+        novo.setRga(aluno.getRga());
+        em.getTransaction().commit();
+        em.close();
+    }
+    
     public void remove(Aluno aluno) {
         em.remove(busca(aluno));
     }

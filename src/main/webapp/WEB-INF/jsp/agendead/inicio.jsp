@@ -176,6 +176,13 @@
         </div>
         </div>
         </div>
+
+
+
+
+
+
+
         </div>
         <div class="card-footer ">
         <hr>
@@ -217,6 +224,113 @@
 
         </div>
         </div>
+
+                <div class="main-panel">
+                <!-- Navbar -->
+                <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
+                <div class="container-fluid">
+                <div class="content" >
+
+                <div class="container">
+                <div class="row">
+                <div class="">
+                <div class="list-group">
+                <p>
+                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#professores" aria-expanded="false" aria-controls="professores">
+                PROFESSORES
+                </button>
+                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#alunos" aria-expanded="false" aria-controls="alunos">
+                ALUNOS
+                </button>
+                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#disciplinas" aria-expanded="false" aria-controls="disciplinas">
+                DISCIPLINAS
+                </button>
+                </p>
+
+
+                <div class="collapse" id="professores">
+                <div class="card card-body">
+                <c:forEach items="${professoresList}" var="professor">
+                        <form action="editarProfessor" method="POST">
+                        <input type="text" hidden name="professor.id" value="${professor.id}">
+                        <a class="list-group-item clearfix" >
+                        ${professor.nome}
+                        <span class="pull-right">
+                        <input type="submit" class="btn btn-primary" value="EDITAR">
+                        <span class="btn btn-xs btn-default" onclick="alert('Action1 -> Play'); event.stopPropagation();">
+                        APAGAR REGISTRO
+                        <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
+                        </span>
+                        </span>
+                        </a>
+                        </form>
+                </c:forEach>
+                </div>
+                </div>
+
+
+                <div class="collapse" id="alunos">
+                <div class="card card-body">
+                <c:forEach items="${alunosList}" var="aluno">
+                        <form action="editarAluno" method="POST">
+                        <input type="text" hidden name="aluno.id" value="${aluno.id}">
+                        <a class="list-group-item clearfix" >
+                        ${aluno.nome}
+                        <span class="pull-right">
+                        <input type="submit" class="btn btn-primary" value="EDITAR">
+                        <span class="btn btn-xs btn-default" onclick="alert('Action1 -> Play'); event.stopPropagation();">
+                        APAGAR REGISTRO
+                        <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
+                        </span>
+                        </span>
+                        </a>
+                        </form>
+                </c:forEach>
+                </div>
+                </div>
+
+                <div class="collapse" id="disciplinas">
+                <div class="card card-body">
+                <c:forEach items="${disciplinasList}" var="disciplina">
+                        <form action="editarDisciplina" method="POST">
+                        <input type="text" hidden name="disciplina.id" value="${disciplina.id}">
+                        <a class="list-group-item clearfix" >
+                        ${disciplina.nome}
+                        <form class="pull-right">
+                        <input type="submit" class="btn btn-primary" value="EDITAR"/>
+                        </form>
+                        <form action="deletaDisciplina/${disciplina.id}">
+                        <input type="submit" class="btn btn-secundary" value="APAGAR REGISTRO"/>
+                        </span>
+                        </form>
+                        </a>
+                        </form>
+                </c:forEach>
+                </div>
+                </div>
+
+
+
+                </div>
+                </div>
+
+                </div>
+                </div>
+                </div>
+
+
+
+
+
+
+
+                </div>
+                </nav>
+
+                </div>
+
+                </div>
+                </div>
         </div>
         <footer class="footer footer-black  footer-white ">
         <div class="container-fluid">
