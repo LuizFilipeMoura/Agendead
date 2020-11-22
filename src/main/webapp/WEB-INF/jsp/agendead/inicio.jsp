@@ -285,7 +285,7 @@
                         ${professor.nome}
                         <input type="submit" class="btn btn-primary" value="EDITAR"/>
                         </form>
-                        <form action="deletaProfessor/${professor.id}">
+                        <form action="deletaProfessor/${professor.id}" class="pull-right">
                         <input type="submit" class="btn btn-secundary" value="APAGAR REGISTRO"/>
                         </form>
                         </a>
@@ -305,7 +305,7 @@
                         ${aluno.nome}
                         <input type="submit" class="btn btn-primary" value="EDITAR"/>
                         </form>
-                        <form action="deletaAluno/${aluno.id}">
+                        <form action="deletaAluno/${aluno.id}" class="pull-right">
                         <input type="submit" class="btn btn-secundary" value="APAGAR REGISTRO"/>
                         </form>
                         </a>
