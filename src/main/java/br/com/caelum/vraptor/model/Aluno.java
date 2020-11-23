@@ -1,5 +1,6 @@
 package br.com.caelum.vraptor.model;
 
+import br.com.caelum.vraptor.dao.DisciplinaDao;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
@@ -19,12 +20,10 @@ public class Aluno {
     private String rga;
     @NotNull @NotEmpty
     private String email;
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     @OrderColumn(name = "pos")
     private List<Disciplina> disciplinas;
-    @ManyToMany
-    @OrderColumn(name = "pos")
-    private List<Reuniao> reunioes;
+
 
     public List<Disciplina> getDisciplinas() {
         return disciplinas;
@@ -32,14 +31,6 @@ public class Aluno {
 
     public void setDisciplinas(List<Disciplina> disciplinas) {
         this.disciplinas = disciplinas;
-    }
-
-    public List<Reuniao> getReunioes() {
-        return reunioes;
-    }
-
-    public void setReunioes(List<Reuniao> reunioes) {
-        this.reunioes = reunioes;
     }
 
     public Aluno() {
@@ -84,6 +75,21 @@ public class Aluno {
         this.email = email;
     }
 
+    @PreRemove
+    public void preRemove() {
+        DisciplinaDao dao = new DisciplinaDao();
+        for(int i = 0; i < disciplinas.size(); i++){
+            Disciplina disciplina = disciplinas.get(i);
+            for(int j = 0; j < disciplina.getAlunosMatriculados().size(); j++){
+                Aluno d =  disciplina.getAlunosMatriculados().get(j);
+                if(id == d.id){
+                    disciplina.getAlunosMatriculados().remove(j);
+                    dao.altera(disciplina, disciplina.getProfessorResponsavel().getId());
+                }
+            }
+        }
+    }
+
     @Override
     public String toString() {
         return "Aluno{" +
@@ -91,8 +97,7 @@ public class Aluno {
                 ", nome='" + nome + '\'' +
                 ", rga='" + rga + '\'' +
                 ", email='" + email + '\'' +
-                ", disciplinas=" + disciplinas +
-                ", reunioes=" + reunioes +
+                ", disciplinas="  +
                 '}';
     }
 }

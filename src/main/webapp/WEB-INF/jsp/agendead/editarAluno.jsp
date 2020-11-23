@@ -47,10 +47,15 @@
                             </div>
 
                             <input type="submit" class="btn btn-primary" value="Alterar"></input>
-
+        </form>
             <c:forEach items="${errors}" var="erro">
                     <br> <label>${erro.category} <br> ${erro.message}</label><br>
             </c:forEach>
-            </form>
+        <label>MATRICULADO EM:
+        <c:forEach items="${aluno.disciplinas}" var="disciplina">
+            ${disciplina.nome}<br>
+        </c:forEach>
+        </label>
+
 
             </div>

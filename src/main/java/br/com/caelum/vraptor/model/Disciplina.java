@@ -14,7 +14,7 @@ public class Disciplina {
                 "id=" + id +
                 ", nome='" + nome + '\'' +
                 ", professorResponsavel="  +
-                ", alunosMatriculados=" + alunosMatriculados +
+                ", alunosMatriculados="  +
                 ", cargaHoraria=" + cargaHoraria +
                 '}';
     }
@@ -27,22 +27,43 @@ public class Disciplina {
     @JoinColumn(unique = true)
     @OneToOne
     private Professor professorResponsavel;
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     @OrderColumn(name = "pos")
     private List<Aluno> alunosMatriculados;
+    private String horario;
+
+    public String getHorario() {
+        return horario;
+    }
+
+    public void setHorario(String horario) {
+        this.horario = horario;
+    }
+
     private Integer cargaHoraria;
 
     @PreRemove
     public void preRemove() {
+
         professorResponsavel.setDisciplinaQueMinistra(null);
+
+//        for(int i = 0; i < alunosMatriculados.size(); i++){
+//            Aluno aluno = alunosMatriculados.get(i);
+//            for(int j = 0; j < aluno.getDisciplinas().size(); j++){
+//                Disciplina d =  aluno.getDisciplinas().get(j);
+//                if(id == d.id){
+//                    aluno.getDisciplinas().remove(j);
+//                }
+//            }
+//        }
     }
 
-    @PreUpdate
-    public void preUpdate() {
-        if(professorResponsavel != null){
-            professorResponsavel.setDisciplinaQueMinistra(null);
-        }
-    }
+//    @PreUpdate
+//    public void preUpdate() {
+//        if(professorResponsavel != null){
+//            professorResponsavel.setDisciplinaQueMinistra(null);
+//        }
+//    }
     public Long getId() {
         return id;
     }

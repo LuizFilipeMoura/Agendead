@@ -57,11 +57,16 @@
 
 <%--                    &lt;%&ndash;            <option name="disciplina.alunosMatriculados">${aluno.nome}</option >&ndash;%&gt;--%>
 <%--            </c:forEach>--%>
-        <c:forEach var="category" items="${alunosList}" varStatus="s">
+        <c:forEach var="aluno" items="${alunosList}" varStatus="s">
+            <input type="checkbox" name="alunos[${s.index}].id" value="${aluno.id}"
 
-            <input type="checkbox" name="alunos[${s.index}].id" value="${category.id}" /> ${category.nome}<br>
+            ${disciplina.alunosMatriculados[s.index].id == aluno.id? 'checked' : '' }            /> ${aluno.nome}<br>
 
         </c:forEach>
+        <div class="md-form md-outline">
+        <label >Horario Da Disciplina</label>
+        <input type="time" name="disciplina.horario" class="form-control" placeholder="Selecione" value="${disciplina.horario}">
+        </div>
                     <input type="submit" class="btn btn-primary" value="Editar Disciplina"></input>
 
 

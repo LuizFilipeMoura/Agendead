@@ -38,7 +38,7 @@
                             <label >Professor Responsavel</label>
                             <select name="idProfessor">
                             <c:forEach items="${professoresList}" var="professor">
-                                    <option value="${professor.id}">${professor.nome}</option >
+                                    <option value="${professor.id}" >${professor.nome}</option >
                             </c:forEach>
                             </select>
                     </div>
@@ -61,6 +61,10 @@
             <input type="checkbox" name="alunos[${s.index}].id" value="${category.id}" /> ${category.nome}<br>
 
         </c:forEach>
+        <div class="md-form md-outline">
+        <label >Horario Da Disciplina</label>
+        <input type="time" name="disciplina.horario" class="form-control" placeholder="Selecione">
+        </div>
                     <input type="submit" class="btn btn-primary" value="Cadastrar disciplina"></input>
 
 

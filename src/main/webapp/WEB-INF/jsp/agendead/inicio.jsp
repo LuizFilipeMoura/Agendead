@@ -5,7 +5,16 @@
         <html lang="en">
 
         <head>
+                        <%
+response.setHeader("Cache-Control","no-cache"); //HTTP 1.1
+response.setHeader("Pragma","no-cache"); //HTTP 1.0
+response.setDateHeader ("Expires", 0);
+//prevents caching at the proxy server
+%>
         <meta charset="utf-8" />
+                <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+                <meta http-equiv="Pragma" content="no-cache">
+                <meta http-equiv="Expires" content="0">
             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <link rel="apple-touch-icon" sizes="76x76" href="img/apple-icon.png">
         <link rel="icon" type="image/png" href="img/favicon.png">
@@ -26,6 +35,7 @@
         </head>
 
         <body class="" >
+
         <div class="wrapper ">
         <div class="sidebar" data-color="white" data-active-color="danger">
         <div class="logo">
@@ -37,6 +47,7 @@
         </a>
         <a href="https://www.creative-tim.com" class="simple-text logo-normal">
         Professor Fulano
+
         <!-- <div class="logo-image-big">
         <img src="assets/img/logo-big.png">
         </div> -->
@@ -64,10 +75,6 @@
                 <li> <a href="<c:url value="/cadastrarAluno"/>">
                         <i class="nc-icon nc-single-02"></i>
                         <p>Cadastrar Aluno</p>
-                </a></li>
-                <li> <a href="<c:url value="/reuniao"/>">
-                        <i class="nc-icon nc-single-02"></i>
-                        <p>Reunião</p>
                 </a></li>
         </ul>
         </div>
@@ -132,33 +139,7 @@
         <!-- End Navbar    font-family: "Montserrat", "Helvetica Neue", Arial, sans-serif;"-->
         <div class="content" >
         <div class="row">
-        <div class="col-lg-3 col-md-6 col-sm-6">
-        <div class="card card-stats" style="height: 144px">
-        <div class="card-body ">
-        <div class="row">
-        <div class="col-5 col-md-4">
-        <div class="icon-big fa-3x text-center icon-warning">
-        <i class="nc-icon nc-calendar-60 text-warning"></i>
-        </div>
-        </div>
-        <div class="col-7 col-md-8">
-        <div class="numbers" style="text-align: right;">
-        <p class="card-category" style="font-size: 16px;">Reuniões</p>
-        <p class="card-title">3
-        <p>
-        </div>
-        </div>
-        </div>
-        </div>
-        <div class="card-footer ">
-        <hr>
-        <div class="stats">
-        <i class="fa fa-calendar-o"></i>
-        Hoje
-        </div>
-        </div>
-        </div>
-        </div>
+
         <div class="col-lg-3 col-md-6 col-sm-6">
         <div class="card card-stats" style="height: 144px">
         <div class="card-body ">
@@ -199,7 +180,7 @@
                 <div class="row">
                 <div class="col-5 col-md-4">
                 <div class="icon-big fa-3x text-center icon-warning">
-                <i class="nc-icon nc-hat-3 text-danger"></i>
+                <i class="nc-icon nc-single-02 text-danger"></i>
                 </div>
                 </div>
                 <div class="col-7 col-md-8">
@@ -290,6 +271,9 @@
                         </form>
                         </a>
                         </div>
+                        <p>Pis: ${professor.pis}</p>
+                        <p>Email: ${professor.email}</p>
+                        <p>Disciplinas: ${professor.disciplinaQueMinistra.nome}</p>
                 </c:forEach>
                 </div>
                 </div>
@@ -297,7 +281,7 @@
 
                 <div class="collapse" id="alunos">
                 <div class="card card-body">
-                <c:forEach items="${alunosList}" var="aluno">
+                <c:forEach items="${alunosList}" var="aluno" varStatus="s">
                         <div class="row">
                         <form action="editarAluno" method="POST" class="pull-right">
                         <input type="text" hidden name="aluno.id" value="${aluno.id}">
@@ -310,6 +294,13 @@
                         </form>
                         </a>
                         </div>
+                        <p>RGA: ${aluno.rga}</p>
+                        <p>Email: ${aluno.email}</p>
+                        <p>Disciplinas:
+                        <c:forEach items="${alunosList[s.index].disciplinas}" varStatus="x">
+                                ${alunosList[s.index].disciplinas[x.index].nome}
+                        </c:forEach>
+                        </p>
                 </c:forEach>
                 </div>
                 </div>
@@ -331,6 +322,13 @@
                         </form>
                         </a>
                         </div>
+                        <p>Horario: ${disciplina.horario}</p>
+                        <p>Professor: ${disciplina.professorResponsavel.nome}</p>
+                        <p>Alunos:
+                        <c:forEach items="${disciplina.alunosMatriculados}" varStatus="x" var="aluno">
+                                ${aluno.nome}
+                        </c:forEach>
+                        </p>
 <%--                        </form>--%>
                 </c:forEach>
                 </div>

@@ -19,12 +19,13 @@ public class Professor {
     @NotNull @NotEmpty
     private String email;
     @JoinColumn(unique = true)
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Disciplina disciplinaQueMinistra;
 
     @PreRemove
     public void preRemove() {
-        disciplinaQueMinistra.setProfessorResponsavel(null);
+        if(disciplinaQueMinistra != null)
+            disciplinaQueMinistra.setProfessorResponsavel(null);
     }
     public Professor() {
     }

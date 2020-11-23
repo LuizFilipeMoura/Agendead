@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PreUpdate;
 
 
+import br.com.caelum.vraptor.model.Aluno;
 import br.com.caelum.vraptor.model.Disciplina;
 import br.com.caelum.vraptor.model.Professor;
 
@@ -31,26 +32,40 @@ public class DisciplinaDao {
         em.persist(disciplina);
         em.getTransaction().commit();
     }
-    public void altera(Disciplina d, Long pId) {
-        Disciplina novad = em.find(Disciplina.class, d.getId());
+    public void altera(Disciplina novad, Long pId) {
+        Disciplina antigaD = em.find(Disciplina.class, novad.getId());
         em.getTransaction().begin();
+        em.merge(antigaD);
         Professor novop = em.find(Professor.class, pId);
-        Professor antigop = em.find(Professor.class, novad.getProfessorResponsavel().getId());
+        Professor antigop = em.find(Professor.class, antigaD.getProfessorResponsavel().getId());
         em.merge(antigop);
+
         antigop.setDisciplinaQueMinistra(null);
-        novad.setProfessorResponsavel(null);
+        em.getTransaction().commit();
+        em.getTransaction().begin();
         em.merge(novop);
-//        novop.setDisciplinaQueMinistra(d);
-//        novad.setProfessorResponsavel(novop);
-//        novad.setNome(d.getNome());
-//        novad.setCargaHoraria(d.getCargaHoraria());
-//        novad.setAlunosMatriculados(d.getAlunosMatriculados());
+
+        novop.setDisciplinaQueMinistra(novad);
+
+        antigaD.setProfessorResponsavel(novop);
+        antigaD.setNome(novad.getNome());
+        antigaD.setCargaHoraria(novad.getCargaHoraria());
+        antigaD.setHorario(novad.getHorario());
+        antigaD.setAlunosMatriculados(novad.getAlunosMatriculados());
         em.getTransaction().commit();
     }
 
-
     public void remove(Disciplina disciplina) {
-        em.remove(busca(disciplina));
+        disciplina = em.find(Disciplina.class, disciplina.getId());
+        em.getTransaction().begin();
+        em.merge(disciplina);
+        for(int i = 0; i < disciplina.getAlunosMatriculados().size(); i++){
+            Aluno aluno = em.find(Aluno.class, disciplina.getAlunosMatriculados().get(i).getId());
+            em.merge(aluno);
+            aluno.getDisciplinas().remove(disciplina);
+        }
+        em.remove(disciplina);
+        em.getTransaction().commit();
     }
 
     public Disciplina busca(Disciplina disciplina) {
