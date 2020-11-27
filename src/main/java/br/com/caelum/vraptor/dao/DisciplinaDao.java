@@ -1,5 +1,6 @@
 package br.com.caelum.vraptor.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -24,12 +25,25 @@ public class DisciplinaDao {
     }
 
     public void adiciona(Disciplina disciplina, Long pId) {
-        Professor p = em.find(Professor.class, pId);
         em.getTransaction().begin();
-        disciplina.setProfessorResponsavel(p);
-        p.setDisciplinaQueMinistra(disciplina);
+        List<Aluno> alunos = disciplina.getAlunosMatriculados();
+        Professor p = em.find(Professor.class, pId);
         em.merge(p);
+        List<Aluno> a = new ArrayList<Aluno>();
+        disciplina.setAlunosMatriculados(a);
+        for(int i = 0; i < alunos.size(); i++){
+            Aluno aluno = em.find(Aluno.class, alunos.get(i).getId());
+            em.merge(aluno);
+            disciplina.getAlunosMatriculados().add(aluno);
+            System.out.println(aluno.getNome());
+            List<Disciplina> lista = aluno.getDisciplinas() == null? new ArrayList<Disciplina>(): aluno.getDisciplinas();
+            lista.add(disciplina);
+            aluno.setDisciplinas(lista);
+        }
+
+        disciplina.setProfessorResponsavel(p);
         em.persist(disciplina);
+        p.setDisciplinaQueMinistra(disciplina);
         em.getTransaction().commit();
     }
     public void altera(Disciplina novad, Long pId) {

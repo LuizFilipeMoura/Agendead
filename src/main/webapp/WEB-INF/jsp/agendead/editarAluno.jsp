@@ -56,6 +56,4 @@
             ${disciplina.nome}<br>
         </c:forEach>
         </label>
-
-
             </div>
