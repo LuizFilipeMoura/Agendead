@@ -273,7 +273,7 @@ response.setDateHeader ("Expires", 0);
                         </div>
                         <p>Pis: ${professor.pis}</p>
                         <p>Email: ${professor.email}</p>
-                        <p>Disciplinas: ${professor.disciplinaQueMinistra.nome}</p>
+                        <p>Disciplina que ministra: ${professor.disciplinaQueMinistra.nome}</p>
                 </c:forEach>
                 </div>
                 </div>
@@ -322,7 +322,7 @@ response.setDateHeader ("Expires", 0);
                         </form>
                         </a>
                         </div>
-                        <p>Horario: ${disciplina.horario}</p>
+                        <p>Horario da reunião: ${disciplina.horario}</p>
                         <p>Professor: ${disciplina.professorResponsavel.nome}</p>
                         <p>Alunos:
                         <c:forEach items="${disciplina.alunosMatriculados}" varStatus="x" var="aluno">

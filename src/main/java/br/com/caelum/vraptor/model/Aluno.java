@@ -77,17 +77,7 @@ public class Aluno {
 
     @PreRemove
     public void preRemove() {
-        DisciplinaDao dao = new DisciplinaDao();
-        for(int i = 0; i < disciplinas.size(); i++){
-            Disciplina disciplina = disciplinas.get(i);
-            for(int j = 0; j < disciplina.getAlunosMatriculados().size(); j++){
-                Aluno d =  disciplina.getAlunosMatriculados().get(j);
-                if(id == d.id){
-                    disciplina.getAlunosMatriculados().remove(j);
-                    dao.altera(disciplina, disciplina.getProfessorResponsavel().getId());
-                }
-            }
-        }
+
     }
 
     @Override

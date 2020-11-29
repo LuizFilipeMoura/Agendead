@@ -151,24 +151,16 @@ public class AgendeadController {
 
     @Post("/sucessoDisciplina")
     public void sucessoDisciplina(@Valid Disciplina disciplina, List<Aluno> alunos, Long idProfessor){
+        Professor professor = em.find(Professor.class, idProfessor);
         disciplina.setAlunosMatriculados(alunos);
+        disciplina.setProfessorResponsavel(professor);
         validator.onErrorForwardTo(this).cadastrarDisciplina();
         if(disciplina.getId() == null){
-            disciplinaDao.adiciona(disciplina, idProfessor);
+            disciplinaDao.adiciona(disciplina);
         }else{
-            disciplinaDao.altera(disciplina, idProfessor);
+            disciplinaDao.altera(disciplina);
         }
 
-        for(int i = 0; i < alunos.size(); i++){
-            em.getTransaction().begin();
-            Aluno aluno = em.find(Aluno.class, alunos.get(i).getId());
-            em.merge(aluno);
-            List<Disciplina> lista = aluno.getDisciplinas() == null? new ArrayList<Disciplina>(): aluno.getDisciplinas();
-            lista.add(disciplina);
-            aluno.setDisciplinas(lista);
-            em.getTransaction().commit();
-//            alunoDao.altera(aluno);
-        }
     }
 
 }

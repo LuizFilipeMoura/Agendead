@@ -1,5 +1,6 @@
 package br.com.caelum.vraptor.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -23,35 +24,83 @@ public class DisciplinaDao {
         this(null);
     }
 
-    public void adiciona(Disciplina disciplina, Long pId) {
-        Professor p = em.find(Professor.class, pId);
+    public void adiciona(Disciplina disciplina) {
+        Professor p = em.find(Professor.class, disciplina.getProfessorResponsavel().getId());
         em.getTransaction().begin();
-        disciplina.setProfessorResponsavel(p);
-        p.setDisciplinaQueMinistra(disciplina);
         em.merge(p);
+        disciplina.setProfessorResponsavel(p);
+        List<Aluno> alunos = disciplina.getAlunosMatriculados();
+        List<Aluno> a = new ArrayList<Aluno>();
+        for(int i = 0; i < alunos.size(); i++){
+            Aluno aluno = alunos.get(i);
+            Aluno aluno1 = em.find(Aluno.class, aluno.getId());
+            em.merge(aluno1);
+            a.add(aluno1);
+        }
+        disciplina.setAlunosMatriculados(a);
+        p.setDisciplinaQueMinistra(disciplina);
         em.persist(disciplina);
         em.getTransaction().commit();
     }
-    public void altera(Disciplina novad, Long pId) {
+    public void altera(Disciplina novad) {
         Disciplina antigaD = em.find(Disciplina.class, novad.getId());
+        Professor p = em.find(Professor.class, novad.getProfessorResponsavel().getId());
+        Professor antigop = em.find(Professor.class, antigaD.getProfessorResponsavel().getId());
         em.getTransaction().begin();
         em.merge(antigaD);
-        Professor novop = em.find(Professor.class, pId);
-        Professor antigop = em.find(Professor.class, antigaD.getProfessorResponsavel().getId());
+        em.merge(p);
         em.merge(antigop);
 
+
         antigop.setDisciplinaQueMinistra(null);
+
         em.getTransaction().commit();
         em.getTransaction().begin();
-        em.merge(novop);
 
-        novop.setDisciplinaQueMinistra(novad);
 
-        antigaD.setProfessorResponsavel(novop);
+
+        p.setDisciplinaQueMinistra(antigaD);
+        antigaD.setProfessorResponsavel(p);
         antigaD.setNome(novad.getNome());
         antigaD.setCargaHoraria(novad.getCargaHoraria());
         antigaD.setHorario(novad.getHorario());
-        antigaD.setAlunosMatriculados(novad.getAlunosMatriculados());
+        List<Aluno> alunosAntigo = antigaD.getAlunosMatriculados();
+
+        if(antigaD.getAlunosMatriculados() != null){
+//            List<Aluno> alunosAntigo = antigaD.getAlunosMatriculados();
+
+            for(int i = 0; i < alunosAntigo.size(); i++){
+                Aluno aluno = alunosAntigo.get(i);
+                Aluno aluno1 = em.find(Aluno.class, aluno.getId());
+                em.merge(aluno1);
+                aluno1.getDisciplinas().remove(antigaD);
+            }
+        }
+
+        if(novad.getAlunosMatriculados() != null){
+            List<Aluno> alunos = novad.getAlunosMatriculados();
+            List<Aluno> a = new ArrayList<Aluno>();
+            for(int i = 0; i < alunos.size(); i++){
+                Aluno aluno = alunos.get(i);
+                Aluno aluno1 = em.find(Aluno.class, aluno.getId());
+                em.merge(aluno1);
+                aluno1.getDisciplinas().remove(antigaD);
+                aluno1.getDisciplinas().add(antigaD);
+                a.add(aluno1);
+            }
+            antigaD.setAlunosMatriculados(a);
+        }else if(antigaD.getAlunosMatriculados() != null){
+//            List<Aluno> alunosAntigo = antigaD.getAlunosMatriculados();
+            List<Aluno> a = new ArrayList<Aluno>();
+
+            for(int i = 0; i < alunosAntigo.size(); i++){
+                Aluno aluno = alunosAntigo.get(i);
+                Aluno aluno1 = em.find(Aluno.class, aluno.getId());
+                em.merge(aluno1);
+                aluno1.getDisciplinas().remove(antigaD);
+            }
+            antigaD.setAlunosMatriculados(a);
+        }
         em.getTransaction().commit();
     }
 

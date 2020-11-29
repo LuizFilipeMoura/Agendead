@@ -4,6 +4,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -46,16 +47,8 @@ public class Disciplina {
     public void preRemove() {
 
         professorResponsavel.setDisciplinaQueMinistra(null);
-
-//        for(int i = 0; i < alunosMatriculados.size(); i++){
-//            Aluno aluno = alunosMatriculados.get(i);
-//            for(int j = 0; j < aluno.getDisciplinas().size(); j++){
-//                Disciplina d =  aluno.getDisciplinas().get(j);
-//                if(id == d.id){
-//                    aluno.getDisciplinas().remove(j);
-//                }
-//            }
-//        }
+        List<Aluno> vazia = new ArrayList<Aluno>();
+        setAlunosMatriculados(vazia);
     }
 
 //    @PreUpdate
