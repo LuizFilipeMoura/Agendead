@@ -116,9 +116,10 @@ public class AgendeadController {
     public void removeDisciplina(String id){
         System.out.println(id);
         Disciplina disciplina = em.find(Disciplina.class, Long.parseLong(id));
-        em.getTransaction().begin();
-        em.remove(disciplina);
-        em.getTransaction().commit();
+        disciplinaDao.remove(disciplina);
+//        em.getTransaction().begin();
+//        em.remove(disciplina);
+//        em.getTransaction().commit();
         result.redirectTo("/");
 
 

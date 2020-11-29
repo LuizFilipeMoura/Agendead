@@ -104,6 +104,8 @@ public class DisciplinaDao {
         em.getTransaction().commit();
     }
 
+
+
     public void remove(Disciplina disciplina) {
         disciplina = em.find(Disciplina.class, disciplina.getId());
         em.getTransaction().begin();

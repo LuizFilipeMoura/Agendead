@@ -49,6 +49,7 @@ public class Disciplina {
         professorResponsavel.setDisciplinaQueMinistra(null);
         List<Aluno> vazia = new ArrayList<Aluno>();
         setAlunosMatriculados(vazia);
+
     }
 
 //    @PreUpdate
