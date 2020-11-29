@@ -22,7 +22,11 @@ public class Professor {
     @OneToOne(cascade = CascadeType.ALL)
     private Disciplina disciplinaQueMinistra;
 
-
+    @PreRemove
+    public void preRemove() {
+        if(disciplinaQueMinistra != null)
+            disciplinaQueMinistra.setProfessorResponsavel(null);
+    }
     public Professor() {
     }
 
